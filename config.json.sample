@@ -1,0 +1,26 @@
+{
+    "address": "0.0.0.0",
+    "port": 8080,
+    "redirect": [
+    {
+        "uri": "/istkani",
+        "android": "http://www.dfordsoft.com/istkani/android",
+        "iphone": "http://www.dfordsoft.com/istkani/iphone",
+        "ipad": "http://www.dfordsoft.com/istkani/ipad",
+        "ipod": "http://www.dfordsoft.com/istkani/ipod",
+        "bb": "http://www.dfordsoft.com/istkani/bb",
+        "wp": "http://www.dfordsoft.com/istkani/wp",
+        "unknown": "http://www.dfordsoft.com/istkani/unknown"
+    },
+    {
+        "uri": "/dearkani",
+        "android": "http://www.dfordsoft.com/dearkani/android",
+        "iphone": "http://www.dfordsoft.com/dearkani/iphone",
+        "ipad": "http://www.dfordsoft.com/dearkani/ipad",
+        "ipod": "http://www.dfordsoft.com/dearkani/ipod",
+        "bb": "http://www.dfordsoft.com/dearkani/bb",
+        "wp": "http://www.dfordsoft.com/dearkani/wp",
+        "unknown": "http://www.dfordsoft.com/dearkani/unknown"
+    }
+    ]
+}
