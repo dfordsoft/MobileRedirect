@@ -37,4 +37,8 @@ Download the pre-built binaries for variant platforms:
 
 [Windows amd64](https://github.com/missdeer/MobileRedirect/raw/prebuilt/MobileRedirect-windows-amd64), append the extension name ".exe" after downloaded.
 
+Usage:
+----
 
+- rename config.json.sample to config.json
+- run ./MobileRedirect
