@@ -10,6 +10,7 @@
         "ipod": "http://www.dfordsoft.com/istkani/ipod",
         "bb": "http://www.dfordsoft.com/istkani/bb",
         "wp": "http://www.dfordsoft.com/istkani/wp",
+		"wx": "",
         "unknown": "http://www.dfordsoft.com/istkani/unknown"
     },
     {
@@ -20,6 +21,7 @@
         "ipod": "http://www.dfordsoft.com/dearkani/ipod",
         "bb": "http://www.dfordsoft.com/dearkani/bb",
         "wp": "http://www.dfordsoft.com/dearkani/wp",
+		"wx": "",
         "unknown": "http://www.dfordsoft.com/dearkani/unknown"
     }
     ]

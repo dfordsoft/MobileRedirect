@@ -18,6 +18,7 @@ type Redirect struct {
 	IPad         string `json:"ipad"`
 	BlackBerry   string `json:"bb"`
 	WindowsPhone string `json:"wp"`
+	WinXin       string `json:"wx"`
 	Unknown      string `json:"unknown"`
 }
 
@@ -75,6 +76,18 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		if matched {
 			log.Println(redirect.WindowsPhone)
 			http.Redirect(w, r, redirect.WindowsPhone, 302)
+			return
+		}
+		matched = regexp.MustCompile("MQQBrowser").MatchString(userAgent)
+		if matched {
+			log.Println(redirect.WinXin)
+			http.Redirect(w, r, redirect.WinXin, 302)
+			return
+		}
+		matched = regexp.MustCompile("TBS").MatchString(userAgent)
+		if matched {
+			log.Println(redirect.WinXin)
+			http.Redirect(w, r, redirect.WinXin, 302)
 			return
 		}
 	}
