@@ -42,6 +42,18 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	if redirect != nil {
 		userAgent := r.UserAgent()
+		matched = regexp.MustCompile("MQQBrowser").MatchString(userAgent)
+		if matched {
+			log.Println("wx", redirect.WinXin)
+			http.Redirect(w, r, redirect.WinXin, 302)
+			return
+		}
+		matched = regexp.MustCompile("TBS").MatchString(userAgent)
+		if matched {
+			log.Println("wx", redirect.WinXin)
+			http.Redirect(w, r, redirect.WinXin, 302)
+			return
+		}
 		matched := regexp.MustCompile("Android").MatchString(userAgent)
 		if matched {
 			log.Println("android", redirect.Android)
@@ -76,18 +88,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		if matched {
 			log.Println("wp", redirect.WindowsPhone)
 			http.Redirect(w, r, redirect.WindowsPhone, 302)
-			return
-		}
-		matched = regexp.MustCompile("MQQBrowser").MatchString(userAgent)
-		if matched {
-			log.Println("wx", redirect.WinXin)
-			http.Redirect(w, r, redirect.WinXin, 302)
-			return
-		}
-		matched = regexp.MustCompile("TBS").MatchString(userAgent)
-		if matched {
-			log.Println("wx", redirect.WinXin)
-			http.Redirect(w, r, redirect.WinXin, 302)
 			return
 		}
 
