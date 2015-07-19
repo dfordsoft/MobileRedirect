@@ -44,55 +44,59 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		userAgent := r.UserAgent()
 		matched := regexp.MustCompile("Android").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.Android)
+			log.Println("android", redirect.Android)
 			http.Redirect(w, r, redirect.Android, 302)
 			return
 		}
 		matched = regexp.MustCompile("iPod").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.IPod)
+			log.Println("ipod", redirect.IPod)
 			http.Redirect(w, r, redirect.IPod, 302)
 			return
 		}
 		matched = regexp.MustCompile("iPhone").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.IPhone)
+			log.Println("iphone", redirect.IPhone)
 			http.Redirect(w, r, redirect.IPhone, 302)
 			return
 		}
 		matched = regexp.MustCompile("iPad").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.IPad)
+			log.Println("ipad", redirect.IPad)
 			http.Redirect(w, r, redirect.IPad, 302)
 			return
 		}
 		matched = regexp.MustCompile("BlackBerry").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.BlackBerry)
+			log.Println("bb", redirect.BlackBerry)
 			http.Redirect(w, r, redirect.BlackBerry, 302)
 			return
 		}
 		matched = regexp.MustCompile("IEMobile").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.WindowsPhone)
+			log.Println("wp", redirect.WindowsPhone)
 			http.Redirect(w, r, redirect.WindowsPhone, 302)
 			return
 		}
 		matched = regexp.MustCompile("MQQBrowser").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.WinXin)
+			log.Println("wx", redirect.WinXin)
 			http.Redirect(w, r, redirect.WinXin, 302)
 			return
 		}
 		matched = regexp.MustCompile("TBS").MatchString(userAgent)
 		if matched {
-			log.Println(redirect.WinXin)
+			log.Println("wx", redirect.WinXin)
 			http.Redirect(w, r, redirect.WinXin, 302)
 			return
 		}
+
+		log.Println("unknown", redirect.Unknown)
+		http.Redirect(w, r, redirect.Unknown, 302)
+		return
 	}
-	log.Println(redirect.Unknown)
-	http.Redirect(w, r, redirect.Unknown, 302)
+	log.Println("unmatched", config.Redirects[0].Unknown)
+	http.Redirect(w, r, config.Redirects[0].Unknown, 302)
 }
 
 func main() {
