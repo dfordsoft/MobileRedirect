@@ -18,7 +18,7 @@ type Redirect struct {
 	IPad         string `json:"ipad"`
 	BlackBerry   string `json:"bb"`
 	WindowsPhone string `json:"wp"`
-	WinXin       string `json:"wx"`
+	WeiXin       string `json:"wx"`
 	Unknown      string `json:"unknown"`
 }
 
@@ -40,55 +40,31 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
+
+	pairs := []struct {
+		Regexp string
+		To     string
+		Desc   string
+	}{
+		{Regexp: "MQQBrowser", To: redirect.WeiXin, Desc: "wx"},
+		{Regexp: "TBS", To: redirect.WeiXin, Desc: "wx"},
+		{Regexp: "Android", To: redirect.Android, Desc: "android"},
+		{Regexp: "iPod", To: redirect.IPod, Desc: "ipod"},
+		{Regexp: "iPhone", To: redirect.IPhone, Desc: "iphone"},
+		{Regexp: "iPad", To: redirect.IPad, Desc: "ipad"},
+		{Regexp: "BlackBerry", To: redirect.BlackBerry, Desc: "bb"},
+		{Regexp: "IEMobile", To: redirect.WindowsPhone, Desc: "wp"},
+	}
+
 	if redirect != nil {
 		userAgent := r.UserAgent()
-		matched := regexp.MustCompile("MQQBrowser").MatchString(userAgent)
-		if matched {
-			log.Println("wx", redirect.WinXin)
-			http.Redirect(w, r, redirect.WinXin, 302)
-			return
-		}
-		matched = regexp.MustCompile("TBS").MatchString(userAgent)
-		if matched {
-			log.Println("wx", redirect.WinXin)
-			http.Redirect(w, r, redirect.WinXin, 302)
-			return
-		}
-		matched = regexp.MustCompile("Android").MatchString(userAgent)
-		if matched {
-			log.Println("android", redirect.Android)
-			http.Redirect(w, r, redirect.Android, 302)
-			return
-		}
-		matched = regexp.MustCompile("iPod").MatchString(userAgent)
-		if matched {
-			log.Println("ipod", redirect.IPod)
-			http.Redirect(w, r, redirect.IPod, 302)
-			return
-		}
-		matched = regexp.MustCompile("iPhone").MatchString(userAgent)
-		if matched {
-			log.Println("iphone", redirect.IPhone)
-			http.Redirect(w, r, redirect.IPhone, 302)
-			return
-		}
-		matched = regexp.MustCompile("iPad").MatchString(userAgent)
-		if matched {
-			log.Println("ipad", redirect.IPad)
-			http.Redirect(w, r, redirect.IPad, 302)
-			return
-		}
-		matched = regexp.MustCompile("BlackBerry").MatchString(userAgent)
-		if matched {
-			log.Println("bb", redirect.BlackBerry)
-			http.Redirect(w, r, redirect.BlackBerry, 302)
-			return
-		}
-		matched = regexp.MustCompile("IEMobile").MatchString(userAgent)
-		if matched {
-			log.Println("wp", redirect.WindowsPhone)
-			http.Redirect(w, r, redirect.WindowsPhone, 302)
-			return
+		for _, p := range pairs {
+			matched := regexp.MustCompile(p.Regexp).MatchString(userAgent)
+			if matched {
+				log.Println(p.Desc, p.To)
+				http.Redirect(w, r, p.To, 302)
+				return
+			}
 		}
 
 		log.Println("unknown", redirect.Unknown)
