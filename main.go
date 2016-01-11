@@ -48,6 +48,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}{
 		{Regexp: "MQQBrowser", To: redirect.WeiXin, Desc: "wx"},
 		{Regexp: "TBS", To: redirect.WeiXin, Desc: "wx"},
+		{Regexp: "MicroMessenger", To: redirect.WeiXin, Desc: "wx"},
 		{Regexp: "Android", To: redirect.Android, Desc: "android"},
 		{Regexp: "iPod", To: redirect.IPod, Desc: "ipod"},
 		{Regexp: "iPhone", To: redirect.IPhone, Desc: "iphone"},
