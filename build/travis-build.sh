@@ -58,7 +58,7 @@ go_install()
     export PATH=${TMPDIR-/tmp}/go/bin/:$PATH
     #wget https://raw.githubusercontent.com/davecheney/golang-crosscompile/master/crosscompile.bash
     source ./crosscompile.bash
-    go-crosscompile-build-all
+    #go-crosscompile-build-all
 }
 
 go_run()
