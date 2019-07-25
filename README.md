@@ -1,11 +1,11 @@
 # MobileRedirect
 According to the web browser user-agent, redirect to a suitable URL.
 
-[![Build Status](https://secure.travis-ci.org/dfordsoft/MobileRedirect.png)](https://travis-ci.org/dfordsoft/MobileRedirect)
+[![Build Status](https://secure.travis-ci.org/missdeer/MobileRedirect.png)](https://travis-ci.org/missdeer/MobileRedirect)
 
 Build:
 ----
-`go get github.com/dfordsoft/MobileRedirect`
+`go get github.com/missdeer/MobileRedirect`
 
 Usage:
 ----
